@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+
+class ChuongTrinh
+{
+    static void Main()
+    {
+        // Tao mot tu dien voi khoa la chuoi va gia tri la so nguyen
+        Dictionary<string, int> tuDien = new Dictionary<string, int>();
+
+        // Them mot so cap khoa gia tri vao tu dien
+        tuDien.Add("Nguoi1", 25);
+        tuDien.Add("Nguoi2", 31);
+        tuDien.Add("Nguoi3", 42);
+        tuDien.Add("Nguoi4", 28);
+
+        // Kiem tra xem mot khoa co ton tai trong tu dien hay khong su dung ContainsKey
+        string khoaKiemTra = "Nguoi1";
+        if (tuDien.ContainsKey(khoaKiemTra))
+        {
+            Console.WriteLine("Khoa '{0}' ton tai trong tu dien.", khoaKiemTra);
+        }
+        else
+        {
+            Console.WriteLine("Khoa '{0}' khong ton tai trong tu dien.", khoaKiemTra);
+        }
+
+        // Thu lay gia tri lien ket voi mot khoa nhat dinh su dung TryGetValue
+        string khoaLay = "Nguoi2";
+        if (tuDien.TryGetValue(khoaLay, out int giaTri))
+        {
+            Console.WriteLine("Gia tri lien ket voi khoa '{0}' la {1}.", khoaLay, giaTri);
+        }
+        else
+        {
+            Console.WriteLine("Khoa '{0}' khong ton tai trong tu dien.", khoaLay);
+        }
+
+        // Lap qua cac muc KeyValuePair trong tu dien va in chung
+        Console.WriteLine("Noi dung tu dien:");
+        foreach (KeyValuePair<string, int> muc in tuDien)
+        {
+            Console.WriteLine("Khoa = {0}, Gia tri = {1}", muc.Key, muc.Value);
+        }
+    }
+}
